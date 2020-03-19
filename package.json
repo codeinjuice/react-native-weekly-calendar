@@ -1,6 +1,6 @@
 {
   "name": "react-native-weekly-calendar",
-  "version": "0.5.0",
+  "version": "0.1.0",
   "description": "Weekly Calendar component for React Native",
   "main": "index.js",
   "scripts": {
