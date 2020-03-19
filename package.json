@@ -1,0 +1,43 @@
+{
+  "name": "react-native-weekly-calendar",
+  "version": "0.5.0",
+  "description": "Weekly Calendar component for React Native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minsanity6/react-native-weekly-calendar.git"
+  },
+  "keywords": [
+    "react",
+    "reactnative",
+    "react-native",
+    "react-native-component",
+    "calendar",
+    "weeklycalendar",
+    "weekly-calendar",
+    "scheduler",
+    "datepicker",
+    "date-picker"
+  ],
+  "author": "Minjae Oak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/minsanity6/react-native-weekly-calendar/issues"
+  },
+  "homepage": "https://github.com/minsanity6/react-native-weekly-calendar#readme",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "prop-types": "^15.5.7",
+    "@react-native-community/datetimepicker": "~2.1.0",
+    "react-native-vector-icons": "~6.6.0",
+    "react": "~16.9.0",
+    "react-native": "0.61.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "metro-react-native-babel-preset": "^0.58.0"
+  }
+}
