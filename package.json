@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/minsanity6/react-native-weekly-calendar.git"
+    "url": "git+https://github.com/codeinjuice/react-native-weekly-calendar.git"
   },
   "keywords": [
     "react",
@@ -25,9 +25,9 @@
   "author": "Minjae Oak",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/minsanity6/react-native-weekly-calendar/issues"
+    "url": "https://github.com/codeinjuice/react-native-weekly-calendar/issues"
   },
-  "homepage": "https://github.com/minsanity6/react-native-weekly-calendar#readme",
+  "homepage": "https://github.com/codeinjuice/react-native-weekly-calendar#readme",
   "dependencies": {
     "moment": "^2.24.0",
     "prop-types": "^15.5.7",
