@@ -14,7 +14,6 @@ import { StyleSheet, View } from 'react-native';
 import WeeklyCalendar from 'react-native-weekly-calendar';
 
 export default function App() {
-
   const sampleEvents = [
     { 'start': '2020-03-23 09:00:00', 'duration': '00:20:00', 'note': 'Walk my dog' },
     { 'start': '2020-03-24 14:00:00', 'duration': '01:00:00', 'note': 'Doctor\'s appointment' },
@@ -41,12 +40,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
 ```
 
+### Select Date
 ![select_dates](https://user-images.githubusercontent.com/8908724/77604941-04b48a00-6f57-11ea-93b2-8e9179ef3255.gif)
+
+### Change Week
 ![change_weeks](https://user-images.githubusercontent.com/8908724/77604967-11d17900-6f57-11ea-90cf-f14250211121.gif)
+
+### Pick Date (iOS & Android)
 ![pick_dates_ios](https://user-images.githubusercontent.com/8908724/77604971-15650000-6f57-11ea-9e53-d9a3c3c091f1.gif)
 ![pick_dates_android](https://user-images.githubusercontent.com/8908724/77611922-fe7bd900-6f69-11ea-85e3-9dd3eacaabf5.gif)
 
@@ -62,3 +66,101 @@ All properties are optional.
 | locale | `'en'` | `string` | Set locale (e.g. Korean='ko', English='en', Chinese(Mandarin)='zh-cn', etc.) |
 | events | `[]` | `array` | Set list of events you want to display below weekly calendar. Default is empty array []. |
 | renderEvent | `undefined` | `func` | Specify how each event should be rendered below weekly calendar. Event & index are given as parameters. |
+| renderFirstEvent | `undefined` | `func` | Specify how first event should be rendered below weekly calendar. Event & index are given as parameters. |
+| renderLastEvent | `undefined` | `func` | Specify how last event should be rendered below weekly calendar. Event & index are given as parameters. |
+| renderDay | `undefined` | `func` | Specify how day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. |
+| renderFirstDay | `undefined` | `func` | Specify how first day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. |
+| renderLastDay | `undefined` | `func` | Specify how last day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. |
+| onDayPress |  `undefined` | `func` | Handler which gets executed on day press. Default = undefined |
+| themeColor | `'#46c3ad'` | `string` | Set theme color. Either color code or color name that is registered in RN StyleSheet works. |
+| style | `{}` | `object` | Set style of `WeeklyCalendar` component |
+| titleStyle | `{}` | `object` | Set text style of calendar title |
+| dayLabelStyle | `{}` | `object` | Set text style of weekday labels |
+
+## Customization
+```javascript
+<View style={styles.container}>
+  <WeeklyCalendar
+    events={sampleEvents} 
+    selected='2020-03-23'
+    startWeekday={7}
+    titleFormat='MMM YYYY'
+    weekdayFormat='ddd'
+    locale='ko'
+    renderEvent={(event, j) => {
+      let startTime = moment(event.start).format('LT').toString()
+      let duration = event.duration.split(':')
+      let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
+      let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
+      return (
+        <View key={j}>
+          <View style={styles.event}>
+            <View style={styles.eventDuration}>
+              <View style={styles.durationContainer}>
+                <View style={styles.durationDot} />
+                <Text style={styles.durationText}>{startTime}</Text>
+              </View>
+              <View style={{ paddingTop: 10 }} />
+              <View style={styles.durationContainer}>
+                <View style={styles.durationDot} />
+                <Text style={styles.durationText}>{endTime}</Text>
+              </View>
+              <View style={styles.durationDotConnector} />
+            </View>
+            <View style={styles.eventNote}>
+              <Text style={styles.eventText}>{event.note}</Text>
+            </View>
+          </View>
+          <View style={styles.lineSeparator} />
+        </View>
+      )
+    }}
+    renderLastEvent={(event, j) => {
+      let startTime = moment(event.start).format('LT').toString()
+      let duration = event.duration.split(':')
+      let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
+      let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
+      return (
+        <View key={j}>
+          <View style={styles.event}>
+            <View style={styles.eventDuration}>
+              <View style={styles.durationContainer}>
+                <View style={styles.durationDot} />
+                <Text style={styles.durationText}>{startTime}</Text>
+              </View>
+              <View style={{ paddingTop: 10 }} />
+              <View style={styles.durationContainer}>
+                <View style={styles.durationDot} />
+                <Text style={styles.durationText}>{endTime}</Text>
+              </View>
+              <View style={styles.durationDotConnector} />
+            </View>
+            <View style={styles.eventNote}>
+              <Text style={styles.eventText}>{event.note}</Text>
+            </View>
+          </View>
+        </View>
+      )
+    }}
+    renderDay={(eventViews, weekdayToAdd, i) => (
+      <View key={i.toString()} style={styles.day}>
+        <View style={styles.dayLabel}>
+          <Text style={[styles.monthDateText, { color: 'pink' }]}>{weekdayToAdd.format('M/D').toString()}</Text>
+          <Text style={[styles.dayText, { color: 'pink' }]}>{weekdayToAdd.format('ddd').toString()}</Text>
+        </View>
+        <View style={[styles.allEvents, eventViews.length === 0 ? { width: '100%', backgroundColor: 'pink' } : {}]}>
+          {eventViews}
+        </View>
+      </View>
+    )}
+    onDayPress={(weekday, i) => {
+      console.log(weekday.format('ddd') + ' is selected! And it is day ' + (i+1) + ' of the week!')
+    }}
+    themeColor='pink'
+    style={{ height: 400 }}
+    titleStyle={{ color: 'blue' }}
+    dayLabelStyle={{ color: 'blue' }}
+  />
+</View>
+```
+![customized](https://user-images.githubusercontent.com/8908724/77609807-50216500-6f64-11ea-9cc4-4a3bb78229fe.png)
