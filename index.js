@@ -52,7 +52,7 @@ const WeeklyCalendar = props => {
         for (let i = 0; i < 7; i++) {
             const weekdayToAdd = date.clone().weekday(props.startWeekday - 7 + i)
             setWeekdays(weekdays => [...weekdays, weekdayToAdd])
-            setWeekdayLabels(weekdayLabels => [...weekdayLabels, weekdayToAdd.format(props.weekDayFormat)])
+            setWeekdayLabels(weekdayLabels => [...weekdayLabels, weekdayToAdd.format(props.weekdayFormat)])
 
             // render schedule view
             let events = map.get(weekdayToAdd.format('YYYY-MM-DD').toString())
@@ -106,7 +106,7 @@ const WeeklyCalendar = props => {
                     <View key={i.toString()} style={styles.day} onLayout= {event => { offsets[i] = event.nativeEvent.layout.y }}>
                         <View style={styles.dayLabel}>
                             <Text style={[styles.monthDateText, { color: props.themeColor }]}>{weekdayToAdd.format('M/D').toString()}</Text>
-                            <Text style={[styles.dayText, { color: props.themeColor }]}>{weekdayToAdd.format(props.weekDayFormat).toString()}</Text>
+                            <Text style={[styles.dayText, { color: props.themeColor }]}>{weekdayToAdd.format(props.weekdayFormat).toString()}</Text>
                         </View>
                         <View style={[styles.allEvents, eventViews.length === 0 ? { width: '100%', backgroundColor: 'lightgrey' } : {}]}>
                             {eventViews}
@@ -332,24 +332,24 @@ WeeklyCalendar.propTypes = {
     startWeekday: PropTypes.number,
     /** Set format to display title (e.g. titleFormat='MMM YYYY' displays "Jan 2020") */
     titleFormat: PropTypes.string,
-    /** Set format to display weekdays (e.g. weekDayFormat='dd' displays "Mo" and weekDayFormat='ddd' displays "Mon") */
-    weekDayFormat: PropTypes.string,
-    /** Set locale (e.g. Korean='ko', English='en', Chinese(Mandarin)='zh-cn') */
+    /** Set format to display weekdays (e.g. weekdayFormat='dd' displays "Mo" and weekdayFormat='ddd' displays "Mon") */
+    weekdayFormat: PropTypes.string,
+    /** Set locale (e.g. Korean='ko', English='en', Chinese(Mandarin)='zh-cn', etc.) */
     locale: PropTypes.string,
-    /** the list of events that you want to display below weekly calendar. 
-     * If you want to render empty events put an empty array []. */
+    /** Set list of events you want to display below weekly calendar. 
+     * Default is empty array []. */
     events: PropTypes.array,
-    /** Specify how each event should be rendered below weekly calendar. Event & index are given as a parameter. */
+    /** Specify how each event should be rendered below weekly calendar. Event & index are given as parameters. */
     renderEvent: PropTypes.func,
-    /** Specify how first event should be rendered below weekly calendar. Event & index are given as a parameter. */
+    /** Specify how first event should be rendered below weekly calendar. Event & index are given as parameters. */
     renderFirstEvent: PropTypes.func,
-    /** Specify how last event should be rendered below weekly calendar. Event & index are given as a parameter. */
+    /** Specify how last event should be rendered below weekly calendar. Event & index are given as parameters. */
     renderLastEvent: PropTypes.func,
-    /** Specify how day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as a parameter. */
+    /** Specify how day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. */
     renderDay: PropTypes.func,
-    /** Specify how first day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as a parameter. */
+    /** Specify how first day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. */
     renderFirstDay: PropTypes.func,
-    /** Specify how last day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as a parameter. */
+    /** Specify how last day should be rendered below weekly calendar. Event Views, day (Moment object), index are given as parameters. */
     renderLastDay: PropTypes.func,
     /** Handler which gets executed on day press. Default = undefined */
     onDayPress: PropTypes.func,
@@ -357,9 +357,9 @@ WeeklyCalendar.propTypes = {
     themeColor: PropTypes.string,
     /** Set style of component */
     style: PropTypes.any,
-    /** Set style of calendar title */
+    /** Set text style of calendar title */
     titleStyle: PropTypes.any,
-    /** Set style of weekday labels */
+    /** Set text style of weekday labels */
     dayLabelStyle: PropTypes.any
 };
 
@@ -367,7 +367,7 @@ WeeklyCalendar.defaultProps = { // All props are optional
     selected: moment(),
     startWeekday: 7,
     titleFormat: undefined,
-    weekDayFormat: 'ddd',
+    weekdayFormat: 'ddd',
     locale: 'en',
     events: [],
     renderEvent: undefined,
