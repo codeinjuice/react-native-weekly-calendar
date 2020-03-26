@@ -1,4 +1,8 @@
 # react-native-weekly-calendar
+[![Version](https://img.shields.io/npm/v/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-calendar)
+[![Build Status](https://travis-ci.org/wix/react-native-weekly-calendar.svg?branch=master)](https://travis-ci.org/wix/react-native-weekly-calendar)
+[![Downloads](https://img.shields.io/npm/dm/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-calendar)
+
 React Native Weekly Calendar component with customization
 
 ## Installation
