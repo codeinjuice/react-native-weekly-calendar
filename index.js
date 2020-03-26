@@ -3,7 +3,6 @@ import { Text, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Mod
 import PropTypes from 'prop-types';
 import moment from 'moment/min/moment-with-locales';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { FontAwesome } from 'react-native-vector-icons';
 import { applyLocale, displayTitleByLocale } from './src/Locale';
 import styles from './src/Style';
 
@@ -180,13 +179,13 @@ const WeeklyCalendar = props => {
         <View style={[styles.component, props.style]}>
             <View style={styles.header}>
                 <TouchableOpacity style={styles.arrowButton} onPress={clickLastWeekHandler}>
-                    <FontAwesome name='angle-left' size={20} color={props.themeColor} />
+                    <Text style={{ color: props.themeColor }}>{'\u25C0'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => setPickerVisible(true)}>
                     <Text style={[styles.title, props.titleStyle]}>{isCalendarReady && displayTitleByLocale(props.locale, selectedDate, props.titleFormat)}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.arrowButton} onPress={clickNextWeekHandler}>
-                    <FontAwesome name='angle-right' size={20} color={props.themeColor} />
+                    <Text style={{ color: props.themeColor }}>{'\u25B6'}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.week}>
