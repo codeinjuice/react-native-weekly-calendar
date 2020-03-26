@@ -84,7 +84,6 @@ All properties are optional.
     events={sampleEvents} 
     selected='2020-03-23'
     startWeekday={7}
-    titleFormat='MMM YYYY'
     weekdayFormat='ddd'
     locale='ko'
     renderEvent={(event, j) => {
@@ -159,8 +158,8 @@ All properties are optional.
     themeColor='pink'
     style={{ height: 400 }}
     titleStyle={{ color: 'blue' }}
-    dayLabelStyle={{ color: 'blue' }}
+    dayLabelStyle={{ color: 'green' }}
   />
 </View>
 ```
-![customized](https://user-images.githubusercontent.com/8908724/77609807-50216500-6f64-11ea-9cc4-4a3bb78229fe.png)
+![customized](https://user-images.githubusercontent.com/8908724/77616782-d5614580-6f75-11ea-8736-6e315ad8802d.png)
