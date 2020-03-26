@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 All properties are optional.
 | Prop  | Default  | PropTypes | Description |
 | :------------ |:---------------:| :---------------:| :-----|
-| selected | `moment()` | `string` or `Date` or `Moment` | Set initially selected day. Format for string: 'YYYY-MM-DD'. Date and Moment instance are allowed as well. |
+| selected | `moment()` | `string` or `Date` or `Moment` | Set initially selected day. Format for string: 'YYYY-MM-DD'. Date and Moment instance are allowed as well. Default provides Moment instance of today|
 | startWeekday | `7` | `number` | Set which weekday to render first. If firstDay = 1, week starts from Monday. If firstDay = 7, week starts from Sunday. |
 | titleFormat | `undefined` | `string` | Set format to display title (e.g. titleFormat='MMM YYYY' displays "Jan 2020") |
 | weekdayFormat | `'ddd'` | `string` | Set format to display weekdays (e.g. weekdayFormat='dd' displays "Mo" and weekdayFormat='ddd' displays "Mon") |
