@@ -163,3 +163,9 @@ All properties are optional.
 </View>
 ```
 ![customized](https://user-images.githubusercontent.com/8908724/77616782-d5614580-6f75-11ea-8736-6e315ad8802d.png)
+
+## Author
+* [Minjae Oak](https://github.com/codeinjuice/)
+
+## License
+This project is licenced under the [MIT License](http://opensource.org/licenses/mit-license.html).
