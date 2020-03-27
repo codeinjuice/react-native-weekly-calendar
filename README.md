@@ -1,6 +1,6 @@
 # react-native-weekly-calendar
-[![Version](https://img.shields.io/npm/v/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-calendar)
-[![Downloads](https://img.shields.io/npm/dm/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-calendar)
+[![Version](https://img.shields.io/npm/v/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-weekly-calendar)
+[![Downloads](https://img.shields.io/npm/dm/react-native-weekly-calendar.svg)](https://www.npmjs.com/package/react-native-weekly-calendar)
 
 React Native Weekly Calendar component with customization
 
