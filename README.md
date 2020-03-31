@@ -82,88 +82,86 @@ All properties are optional.
 
 ## Customization
 ```javascript
-<View style={styles.container}>
-  <WeeklyCalendar
-    events={sampleEvents} 
-    selected='2020-03-23'
-    startWeekday={7}
-    weekdayFormat='ddd'
-    locale='ko'
-    renderEvent={(event, j) => {
-      let startTime = moment(event.start).format('LT').toString()
-      let duration = event.duration.split(':')
-      let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
-      let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
-      return (
-        <View key={j}>
-          <View style={styles.event}>
-            <View style={styles.eventDuration}>
-              <View style={styles.durationContainer}>
-                <View style={styles.durationDot} />
-                <Text style={styles.durationText}>{startTime}</Text>
-              </View>
-              <View style={{ paddingTop: 10 }} />
-              <View style={styles.durationContainer}>
-                <View style={styles.durationDot} />
-                <Text style={styles.durationText}>{endTime}</Text>
-              </View>
-              <View style={styles.durationDotConnector} />
+<WeeklyCalendar
+  events={sampleEvents} 
+  selected='2020-03-23'
+  startWeekday={7}
+  weekdayFormat='ddd'
+  locale='ko'
+  renderEvent={(event, j) => {
+    let startTime = moment(event.start).format('LT').toString()
+    let duration = event.duration.split(':')
+    let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
+    let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
+    return (
+      <View key={j}>
+        <View style={styles.event}>
+          <View style={styles.eventDuration}>
+            <View style={styles.durationContainer}>
+              <View style={styles.durationDot} />
+              <Text style={styles.durationText}>{startTime}</Text>
             </View>
-            <View style={styles.eventNote}>
-              <Text style={styles.eventText}>{event.note}</Text>
+            <View style={{ paddingTop: 10 }} />
+            <View style={styles.durationContainer}>
+              <View style={styles.durationDot} />
+              <Text style={styles.durationText}>{endTime}</Text>
             </View>
+            <View style={styles.durationDotConnector} />
           </View>
-          <View style={styles.lineSeparator} />
-        </View>
-      )
-    }}
-    renderLastEvent={(event, j) => {
-      let startTime = moment(event.start).format('LT').toString()
-      let duration = event.duration.split(':')
-      let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
-      let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
-      return (
-        <View key={j}>
-          <View style={styles.event}>
-            <View style={styles.eventDuration}>
-              <View style={styles.durationContainer}>
-                <View style={styles.durationDot} />
-                <Text style={styles.durationText}>{startTime}</Text>
-              </View>
-              <View style={{ paddingTop: 10 }} />
-              <View style={styles.durationContainer}>
-                <View style={styles.durationDot} />
-                <Text style={styles.durationText}>{endTime}</Text>
-              </View>
-              <View style={styles.durationDotConnector} />
-            </View>
-            <View style={styles.eventNote}>
-              <Text style={styles.eventText}>{event.note}</Text>
-            </View>
+          <View style={styles.eventNote}>
+            <Text style={styles.eventText}>{event.note}</Text>
           </View>
         </View>
-      )
-    }}
-    renderDay={(eventViews, weekdayToAdd, i) => (
-      <View key={i.toString()} style={styles.day}>
-        <View style={styles.dayLabel}>
-          <Text style={[styles.monthDateText, { color: 'pink' }]}>{weekdayToAdd.format('M/D').toString()}</Text>
-          <Text style={[styles.dayText, { color: 'pink' }]}>{weekdayToAdd.format('ddd').toString()}</Text>
-        </View>
-        <View style={[styles.allEvents, eventViews.length === 0 ? { width: '100%', backgroundColor: 'pink' } : {}]}>
-          {eventViews}
+        <View style={styles.lineSeparator} />
+      </View>
+    )
+  }}
+  renderLastEvent={(event, j) => {
+    let startTime = moment(event.start).format('LT').toString()
+    let duration = event.duration.split(':')
+    let seconds = parseInt(duration[0]) * 3600 + parseInt(duration[1]) * 60 + parseInt(duration[2])
+    let endTime = moment(event.start).add(seconds, 'seconds').format('LT').toString()
+    return (
+      <View key={j}>
+        <View style={styles.event}>
+          <View style={styles.eventDuration}>
+            <View style={styles.durationContainer}>
+              <View style={styles.durationDot} />
+              <Text style={styles.durationText}>{startTime}</Text>
+            </View>
+            <View style={{ paddingTop: 10 }} />
+            <View style={styles.durationContainer}>
+              <View style={styles.durationDot} />
+              <Text style={styles.durationText}>{endTime}</Text>
+            </View>
+            <View style={styles.durationDotConnector} />
+          </View>
+          <View style={styles.eventNote}>
+            <Text style={styles.eventText}>{event.note}</Text>
+          </View>
         </View>
       </View>
-    )}
-    onDayPress={(weekday, i) => {
-      console.log(weekday.format('ddd') + ' is selected! And it is day ' + (i+1) + ' of the week!')
-    }}
-    themeColor='pink'
-    style={{ height: 400 }}
-    titleStyle={{ color: 'blue' }}
-    dayLabelStyle={{ color: 'green' }}
-  />
-</View>
+    )
+  }}
+  renderDay={(eventViews, weekdayToAdd, i) => (
+    <View key={i.toString()} style={styles.day}>
+      <View style={styles.dayLabel}>
+        <Text style={[styles.monthDateText, { color: 'pink' }]}>{weekdayToAdd.format('M/D').toString()}</Text>
+        <Text style={[styles.dayText, { color: 'pink' }]}>{weekdayToAdd.format('ddd').toString()}</Text>
+      </View>
+      <View style={[styles.allEvents, eventViews.length === 0 ? { width: '100%', backgroundColor: 'pink' } : {}]}>
+        {eventViews}
+      </View>
+    </View>
+  )}
+  onDayPress={(weekday, i) => {
+    console.log(weekday.format('ddd') + ' is selected! And it is day ' + (i+1) + ' of the week!')
+  }}
+  themeColor='pink'
+  style={{ height: 400 }}
+  titleStyle={{ color: 'blue' }}
+  dayLabelStyle={{ color: 'green' }}
+/>
 ```
 ![customized](https://user-images.githubusercontent.com/8908724/77616782-d5614580-6f75-11ea-8736-6e315ad8802d.png)
 
