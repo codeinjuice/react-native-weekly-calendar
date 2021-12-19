@@ -127,6 +127,8 @@ const WeeklyCalendar = props => {
         setSelectedDate(lastWeekCurrDate.clone().weekday(props.startWeekday - 7))
         createWeekdays(lastWeekCurrDate.clone(), eventMap)
         setCalendarReady(true)
+        if (props.onPressWeek)
+          props.onPressWeek(lastWeekCurrDate.clone().format('YYYY-MM-DD'))
     }
 
     const clickNextWeekHandler = () => {
@@ -136,6 +138,8 @@ const WeeklyCalendar = props => {
         setSelectedDate(nextWeekCurrDate.clone().weekday(props.startWeekday - 7))
         createWeekdays(nextWeekCurrDate.clone(), eventMap)
         setCalendarReady(true)
+        if (props.onPressWeek)
+          props.onPressWeek(nextWeekCurrDate.clone().format('YYYY-MM-DD'))
     }
 
     const isSelectedDate = date => {
@@ -360,7 +364,9 @@ WeeklyCalendar.propTypes = {
     /** Set text style of calendar title */
     titleStyle: PropTypes.any,
     /** Set text style of weekday labels */
-    dayLabelStyle: PropTypes.any
+    dayLabelStyle: PropTypes.any,
+    /** Handler change week **/
+    onPressWeek: PropTypes.func,
 };
 
 WeeklyCalendar.defaultProps = { // All props are optional
@@ -381,6 +387,7 @@ WeeklyCalendar.defaultProps = { // All props are optional
     style: {},
     titleStyle: {},
     dayLabelStyle: {},
+    onPressWeek: undefined,
 };
 
 export default WeeklyCalendar;
